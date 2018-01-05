@@ -1,0 +1,25 @@
+{
+  "root": true,
+  "extends": [
+    "eslint:recommended",
+    "standard",
+    "plugin:vue/recommended"
+  ],
+  "parserOptions": {
+    "parser": "babel-eslint",
+    "sourceType": "module"
+  },
+  "env": {
+    "browser": true
+  },
+  "plugins": [
+    "html"
+  ],
+  "rules": {
+    "no-debugger": "warn",
+    "no-extra-boolean-cast": "off",
+    "no-extra-parens": "off",
+    "array-callback-return": "error",
+    "consistent-return": "error"
+  }
+}
