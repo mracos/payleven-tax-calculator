@@ -9,5 +9,6 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="sass">
+@import './assets/reset';
 </style>

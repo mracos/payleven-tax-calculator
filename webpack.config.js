@@ -1,6 +1,24 @@
 var path = require('path')
 var webpack = require('webpack')
 
+const generateSassResourceLoader = () => {
+  return {
+    loader: 'sass-resources-loader',
+      options: {
+        resources: './src/assets/_resources.sass',
+      }
+  }
+}
+
+const generateScssResourceLoader = () => {
+  return {
+    loader: 'sass-resources-loader',
+      options: {
+        resources: './src/assets/_resources.scss',
+      }
+  }
+}
+
 module.exports = {
   entry: './src/main.js',
   output: {
@@ -31,7 +49,8 @@ module.exports = {
         use: [
           'vue-style-loader',
           'css-loader',
-          'sass-loader'
+          'sass-loader',
+          generateScssResourceLoader(),
         ],
       },
       {
@@ -39,7 +58,8 @@ module.exports = {
         use: [
           'vue-style-loader',
           'css-loader',
-          'sass-loader?indentedSyntax'
+          'sass-loader?indentedSyntax',
+          generateSassResourceLoader(),
         ],
       },
       {
@@ -53,12 +73,14 @@ module.exports = {
             'scss': [
               'vue-style-loader',
               'css-loader',
-              'sass-loader'
+              'sass-loader',
+              generateScssResourceLoader(),
             ],
             'sass': [
               'vue-style-loader',
               'css-loader',
-              'sass-loader?indentedSyntax'
+              'sass-loader?indentedSyntax',
+              generateSassResourceLoader(),
             ]
           }
           // other vue-loader options go here
@@ -80,7 +102,8 @@ module.exports = {
   },
   resolve: {
     alias: {
-      'vue$': 'vue/dist/vue.esm.js'
+      'vue$': 'vue/dist/vue.esm.js',
+      '@': './src/',
     },
     extensions: ['*', '.js', '.vue', '.json']
   },
