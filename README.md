@@ -1,18 +1,20 @@
 # payleven-tax-calculator
 
-> Responsive calculator for the payleven taxes
+> PWA calculator for the payleven taxes
+It calculates how much you need to charge to receive the right amount (AKA, make your client pay the taxes (: )
+
+- Configured with babel and eslint :)
+- Using [keen-ui](https://github.com/JosephusPaye/Keen-UI)
 
 ## Build Setup
 
 ``` bash
-# install dependencies
-npm install
-
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
+# install dependencies and serve it on localhost:8080
+yarn && yarn dev
 ```
 
-For detailed explanation on how things work, consult the [docs for vue-loader](http://vuejs.github.io/vue-loader).
+### TODO
+- [ ] better UI
+- [ ] Add tests
+- [ ] add manifest.json so it works offline
+- [ ] make optional the "client pays the taxes" feature
