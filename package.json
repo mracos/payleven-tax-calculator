@@ -7,10 +7,14 @@
   "private": true,
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot --inline",
-    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
+    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules",
+    "start": "node node_modules/serve/bin/serve.js -p $PORT",
+    "heroku-prebuild": "npm install --only=dev",
+    "heroku-postbuild": "node node_modules/webpack/bin/webpack.js --progress --hide-modules"
   },
   "dependencies": {
     "keen-ui": "^1.0.1",
+    "serve": "^6.4.4",
     "vue": "^2.5.11"
   },
   "browserslist": [
