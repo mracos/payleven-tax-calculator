@@ -2,10 +2,10 @@ import { Component } from '@angular/core';
 import { ActionSheetController } from 'ionic-angular';
 
 const CREDIT_TAX: any = {
-  EACH: 2.49,
-  FIRST: 4.19,
+  EACH: 0.0249,
+  FIRST: 0.0419,
 };
-const DEBIT_TAX: number = 2.49;
+const DEBIT_TAX: number = 0.0249;
 
 interface PaymentOption {
   installments: number,
@@ -45,6 +45,10 @@ export class HomePage {
 
       return creditOption;
     }));
+  }
+
+  public get paymentAdjusted() :number {
+    return this.payment * (1 + this.paymentOption.tax);
   }
 
   public areTwoPaymentOptionsEqual(firstPayment: PaymentOption, secondPayment: PaymentOption) :Boolean {

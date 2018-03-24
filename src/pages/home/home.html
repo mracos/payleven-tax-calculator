@@ -7,21 +7,42 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-item>
-    <ion-label>Quanto quer receber?</ion-label>
-    <ion-input type="number" [(ngModel)]="payment"></ion-input>
-  </ion-item>
+  <ion-card>
+    <ion-card-header>
+      Quanto você irá receber?
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item>
+          <ion-label floating>Valor R$</ion-label>
+          <ion-input type="number" [(ngModel)]="payment"></ion-input>
+        </ion-item>
 
-  <ion-item>
-    <ion-label>Forma de pagamento</ion-label>
-    <ion-select [(ngModel)]="paymentOption" [compareWith]="areTwoPaymentOptionsEqual">
-      <ion-option *ngFor="let paymentOption of paymentOptions" [value]="paymentOption">
-        {{ paymentOption.name }}
-      </ion-option>
-    </ion-select>
-  </ion-item>
+        <ion-item>
+          <ion-label floating>Forma de pagamento</ion-label>
+          <ion-select [(ngModel)]="paymentOption" [compareWith]="areTwoPaymentOptionsEqual">
+            <ion-option *ngFor="let paymentOption of paymentOptions" [value]="paymentOption">
+              {{ paymentOption.name }} - Taxa: {{ paymentOption.tax | percent:'1.2-2' }}
+            </ion-option>
+          </ion-select>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
 
-  <ion-item>
-    {{ payment }} - {{ paymentOption | json }}
-  </ion-item>
+  <ion-card *ngIf="paymentOption && payment">
+    <ion-card-header>
+      Quanto você deverá cobrar:
+    </ion-card-header>
+    <ion-card-content *ngIf="paymentOption">
+      <ion-list>
+        <ion-item>
+          {{ paymentAdjusted | currency:'BRL' }}
+        </ion-item>
+        <ion-item *ngIf="paymentOption.installments > 1">
+          será pago em {{ paymentOption.installments }}x de {{ paymentAdjusted  / paymentOption.installments | currency:'BRL' }}
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
