@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="dark" text-uppercase>
     <ion-title>
       Payleven tax calculator
     </ion-title>
@@ -11,7 +11,7 @@
     <ion-row>
       <ion-col>
         <ion-card>
-          <ion-card-header>
+          <ion-card-header color="primary">
             Quanto você irá receber?
           </ion-card-header>
           <ion-card-content>
@@ -36,7 +36,7 @@
 
       <ion-col>
         <ion-card *ngIf="paymentOption && payment">
-          <ion-card-header>
+          <ion-card-header class="results-header" color="secondary">
             Quanto você deverá cobrar:
           </ion-card-header>
           <ion-card-content *ngIf="paymentOption">
@@ -44,8 +44,9 @@
               <ion-item>
                 {{ paymentAdjusted | currency:'BRL' }}
               </ion-item>
-              <ion-item *ngIf="paymentOption.installments > 1">
-                será pago em {{ paymentOption.installments }}x de {{ paymentAdjusted  / paymentOption.installments | currency:'BRL' }}
+              <ion-item *ngIf="paymentOption.installments > 1" text-wrap>
+                será pago em {{ paymentOption.installments }}x
+                de {{ paymentAdjusted  / paymentOption.installments | currency:'BRL' }}
               </ion-item>
             </ion-list>
           </ion-card-content>

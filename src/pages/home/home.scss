@@ -1,3 +1,14 @@
 page-home {
+  ion-content {
+    background: linear-gradient(
+      225deg,
+      color($colors, primary),
+      color($colors, secondary)
+    );
+  }
 
+  ion-card-header {
+    font-weight: bold;
+    border-bottom: 1px solid color($colors, primary);
+  }
 }
