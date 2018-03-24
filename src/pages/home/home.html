@@ -31,11 +31,22 @@
               </ion-item>
             </ion-list>
           </ion-card-content>
+
+          <button
+              ion-item
+              text-uppercase
+              text-center
+              color="dark"
+              (click)="setCalculateClicked()"
+              [disabled]="!areInputsValid"
+          >
+            Calcular
+          </button>
         </ion-card>
       </ion-col>
 
       <ion-col>
-        <ion-card *ngIf="paymentOption && payment">
+        <ion-card *ngIf="areInputsValid && calculateClicked">
           <ion-card-header class="results-header" color="secondary">
             Quanto você deverá cobrar:
           </ion-card-header>

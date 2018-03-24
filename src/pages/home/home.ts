@@ -21,6 +21,7 @@ interface PaymentOption {
 export class HomePage {
   public payment: number;
   public paymentOption: PaymentOption;
+  public calculateClicked: boolean = false;
   public possibleInstallments: Array<number> = Array.from(Array(12).keys(), (v) => v + 1);
 
   constructor(public actionSheetCtrl: ActionSheetController) {}
@@ -47,11 +48,22 @@ export class HomePage {
     }));
   }
 
+  public get areInputsValid() {
+    return !!(this.payment && this.paymentOption);
+  }
+
   public get paymentAdjusted() :number {
     return this.payment * (1 + this.paymentOption.tax);
   }
 
-  public areTwoPaymentOptionsEqual(firstPayment: PaymentOption, secondPayment: PaymentOption) :Boolean {
+  public areTwoPaymentOptionsEqual(
+    firstPayment: PaymentOption,
+    secondPayment: PaymentOption
+  ) :Boolean {
     return (firstPayment.name === secondPayment.name);
+  }
+
+  public setCalculateClicked() :void {
+    this.calculateClicked = true;
   }
 }
